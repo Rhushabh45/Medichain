@@ -1,0 +1,30 @@
+const [medicineList, setMedicineList] = React.useState([]);
+
+	async function getAllMedicine() {
+		try {
+		  const { ethereum } = window;
+	  
+		  if (ethereum) {
+			const provider = new ethers.providers.Web3Provider(ethereum);
+			const signer = provider.getSigner();
+			const PharmaContract = new ethers.Contract(PharmaContractAddress,abiPharmaContract,signer);
+			const AllData = await PharmaContract.getAllPharma();
+			//console.log(AllData);
+			let medicineList = [];
+
+			for(var i=0;i<=1;i++){
+				medicineList.push(AllData[i]);
+			}
+			return medicineList;
+		  }
+		} catch (error) {
+		  console.error(error);
+		}
+	  }
+
+
+
+	  <td>{Boolean(record[8]) ? "t" : "f"}</td>
+	  <td style={{ color: record[8] ? "green" : "green" }}>
+		  {String(record[8]) ? "Not Verified" : "Verified"}
+	  </td>
